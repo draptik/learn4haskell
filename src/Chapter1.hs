@@ -652,8 +652,9 @@ specifying complex expressions.
 sumLast2 :: Int -> Int
 sumLast2 n =
   let
-    ld = lastDigit n 
-    secondToLastDigit = lastDigit (div n 10)
+    absoluteNumber = abs n
+    ld = lastDigit absoluteNumber 
+    secondToLastDigit = lastDigit (div absoluteNumber 10)
   in 
     ld + secondToLastDigit
 
@@ -678,12 +679,14 @@ aren't ready for this boss yet!
 
 firstDigit :: Int -> Int
 firstDigit n =
-  if n < 10 then n
-  else if div10 n <= 9 then div10 n
-  else firstDigit (div10 n)
+  if (absNumber n) < 10 then (absNumber n)
+  else if div10 (absNumber n) <= 9 then div10 (absNumber n)
+  else firstDigit (div10 (absNumber n))
   where
     div10 :: Int -> Int
-    div10 x = div x 10
+    div10 x = div (absNumber x) 10
+    absNumber :: Int -> Int
+    absNumber x = abs x
 
 
 {-
