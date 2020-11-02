@@ -519,7 +519,7 @@ True
 False
 -}
 isThird42 :: [Int] -> Bool
-isThird42 (_ : _ : x : _) = x == 42
+isThird42 (_ : _ : 42 : _) = True
 isThird42 _ = False
 
 
