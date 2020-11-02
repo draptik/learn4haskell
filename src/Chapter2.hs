@@ -518,7 +518,9 @@ True
 >>> isThird42 [42, 42, 0, 42]
 False
 -}
-isThird42 = error "isThird42: Not implemented!"
+isThird42 :: [Int] -> Bool
+isThird42 (_ : _ : x : _) = x == 42
+isThird42 _ = False
 
 
 {- |
