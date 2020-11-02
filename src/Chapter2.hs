@@ -348,7 +348,8 @@ from it!
 ghci> :l src/Chapter2.hs
 -}
 subList :: Int -> Int -> [a] -> [a]
-subList = error "subList: Not implemented!"
+subList startIndex endIndex myList =
+  take (endIndex - startIndex + 1) (drop startIndex myList)
 
 {- |
 =⚔️= Task 4
