@@ -816,10 +816,12 @@ divideTenBy :: Int -> Int
 divideTenBy x = div 10 x
 
 -- TODO: type ;)
+listElementsLessThan :: Int -> [Int] -> [Int] 
 listElementsLessThan x l = filter (< x) l
 
 -- Can you eta-reduce this one???
-pairMul xs ys = zipWith (*) xs ys
+-- pairMul xs ys = zipWith (*) xs ys
+pairMul = zipWith (*)
 
 {- |
 =🛡= Lazy evaluation
@@ -874,8 +876,14 @@ list.
 
 🕯 HINT: Use the 'cycle' function
 -}
-rotate = error "rotate: Not implemented!"
-
+rotate :: Int -> [a] -> [a]
+rotate 0 l = l
+rotate _ [] = []
+rotate rotateBy list =
+  let
+    lengthOfList = length list
+  in
+    take lengthOfList (drop rotateBy (cycle list))
 {- |
 =💣= Task 12*
 
