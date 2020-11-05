@@ -753,7 +753,11 @@ value of the element itself
 -- PDTODO What is the expected solution?
 smartReplicate :: [Int] -> [Int]
 smartReplicate l =
-  concat (map (\x -> replicate x x) l)
+  -- let
+  --   listOfLists = map (\x -> replicate x x) l
+  -- in
+  --   map (concat) listOfLists
+ concat (map (\x -> replicate x x) l)
  
 
 {- |
@@ -767,7 +771,9 @@ the list with only those lists that contain a passed element.
 
 🕯 HINT: Use the 'elem' function to check whether an element belongs to a list
 -}
-contains = error "contains: Not implemented!"
+contains :: Int -> [[Int]] -> [[Int]]
+contains gesuchteZahl listeVonListen =
+  filter (\listeVonZahlen -> elem gesuchteZahl listeVonZahlen) listeVonListen
 
 
 {- |
