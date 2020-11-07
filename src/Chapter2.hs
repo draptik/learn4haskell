@@ -349,7 +349,12 @@ ghci> :l src/Chapter2.hs
 -}
 subList :: Int -> Int -> [a] -> [a]
 subList startIndex endIndex myList =
-  take (endIndex - startIndex + 1) (drop startIndex myList)
+  let
+    isNegative i = i < 0
+  in
+    if isNegative startIndex then []
+    else if isNegative endIndex then []
+    else take (endIndex - startIndex + 1) (drop startIndex myList)
 
 {- |
 =⚔️= Task 4
