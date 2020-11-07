@@ -887,8 +887,11 @@ rotate _ [] = []
 rotate rotateBy list =
   let
     lengthOfList = length list
+    isNegative i = i < 0
   in
-    take lengthOfList (drop rotateBy (cycle list))
+    if isNegative rotateBy then []
+    else take lengthOfList (drop rotateBy (cycle list))
+
 {- |
 =💣= Task 12*
 
